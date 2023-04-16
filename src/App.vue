@@ -25,7 +25,7 @@ const {
   GAME_STATE_WIN,
 } = STATE;
 const { PLAYER_DESTROY_AUDIO } = SOUNDS;
-const { BULLET_TYPE_ENEMY, BULLET_TYPE_PLAYER } = BULLET_TYPE;
+const { BULLET_TYPE_PLAYER } = BULLET_TYPE;
 
 //游戏逻辑方法引入
 import {
@@ -135,7 +135,7 @@ export default {
         case GAME_STATE_MENU:
           if (e.keyCode == KEYBOARD.ENTER) {
             gameInstance.gameState = GAME_STATE_INIT;
-            console.log("player2:", gameInstance.player2.lives);
+            // console.log("player2:", gameInstance.player2.lives);
             //只有一个玩家
             if (gameInstance.menu.playNum == 1) {
               gameInstance.player2.lives = 0;

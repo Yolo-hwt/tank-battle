@@ -1,5 +1,4 @@
 //全局参数引入
-import * as $ from "jquery";
 import { SCREEN, DIRECT, ENEMY_LOCATION, KEYBOARD, TAGS, STATE, PICTURES, POS } from "@/hook/globalParams";
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREEN;
 const { UP, DOWN, LEFT, RIGHT } = DIRECT
@@ -204,30 +203,38 @@ export const drawAll = function (gameInstance) {
 //初始化视窗
 export const initScreen = function (gameInstance) {
     //选择关卡canvas
-    gameInstance.ctx = $("#stageCanvas")[0].getContext("2d");
+    const temp_canvas = document.querySelector("#stageCanvas");
+    gameInstance.ctx = temp_canvas.getContext("2d");
 
-    $("#stageCanvas").attr({ width: SCREEN_WIDTH });
-    $("#stageCanvas").attr({ height: SCREEN_HEIGHT });
+    temp_canvas.setAttribute("width", SCREEN_WIDTH);
+    temp_canvas.setAttribute("height", SCREEN_HEIGHT);
 
-    gameInstance.wallCtx = $("#wallCanvas")[0].getContext("2d");
-    $("#wallCanvas").attr({ width: SCREEN_WIDTH });
-    $("#wallCanvas").attr({ height: SCREEN_HEIGHT });
+    const temp_wallCtx = document.querySelector("#wallCanvas");
+    gameInstance.wallCtx = temp_wallCtx.getContext("2d");
+    temp_wallCtx.setAttribute("width", SCREEN_WIDTH);
+    temp_wallCtx.setAttribute("height", SCREEN_HEIGHT);
 
-    gameInstance.grassCtx = $("#grassCanvas")[0].getContext("2d");
-    $("#grassCanvas").attr({ width: SCREEN_WIDTH });
-    $("#grassCanvas").attr({ height: SCREEN_HEIGHT });
+    const temp_grass = document.querySelector("#grassCanvas");
+    gameInstance.grassCtx = temp_grass.getContext("2d");
+    temp_grass.setAttribute("width", SCREEN_WIDTH);
+    temp_grass.setAttribute("height", SCREEN_HEIGHT);
 
-    gameInstance.tankCtx = $("#tankCanvas")[0].getContext("2d");
-    $("#tankCanvas").attr({ width: SCREEN_WIDTH });
-    $("#tankCanvas").attr({ height: SCREEN_HEIGHT });
+    const temp_tank = document.querySelector("#tankCanvas");
+    gameInstance.tankCtx = temp_tank.getContext("2d");
+    temp_tank.setAttribute("width", SCREEN_WIDTH);
+    temp_tank.setAttribute("height", SCREEN_HEIGHT);
 
-    gameInstance.overCtx = $("#overCanvas")[0].getContext("2d");
-    $("#overCanvas").attr({ width: SCREEN_WIDTH });
-    $("#overCanvas").attr({ height: SCREEN_HEIGHT });
+    const temp_over = document.querySelector("#overCanvas");
+    gameInstance.overCtx = temp_over.getContext("2d");
+    temp_over.setAttribute("width", SCREEN_WIDTH);
+    temp_over.setAttribute("height", SCREEN_HEIGHT);
 
-    $("#canvasDiv").css({ width: SCREEN_WIDTH });
-    $("#canvasDiv").css({ height: SCREEN_HEIGHT });
-    $("#canvasDiv").css({ "background-color": "#000000" });
+    const canvasDiv = document.querySelector("#canvasDiv");
+    canvasDiv.style.width = SCREEN_WIDTH + "px";
+    canvasDiv.style.height = SCREEN_HEIGHT + "px";
+    canvasDiv.style["background-color"] = "#0000";
+
+    // 
 }
 //初始化对象
 export const initObject = function (gameInstance) {
